@@ -1,0 +1,50 @@
+body {
+    padding-top: 40px;
+    text-align: center;
+    font: sans-serif;
+    font-size: 17px;
+}
+
+span {
+    color: #0093ad;
+}
+
+button {
+    height: 40px;
+    width: 200px;
+    font-size: 25px;
+    background-color: #0093ad;
+    color: #fff;
+    border-style: none;
+}
+
+button:hover {
+    background-color: #00ad37;
+    cursor: pointer;
+}
+
+.ajs-message.ajs-success.ajs-visible {
+    color: #fff;
+}
+
+.loading {
+    width: 100%;
+    text-align: center;
+}
+
+.bitcoin {
+    font-size: 33px;
+    font-weight: 700;
+}
+
+select {
+    margin: 0.5em;
+    font-size: 20px;
+    background-color: #00ad79;
+    color: #fff;
+}
+
+#disclaimer {
+    margin-top: 50px;
+    font-size: 15px;
+}

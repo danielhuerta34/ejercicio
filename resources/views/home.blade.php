@@ -49,6 +49,7 @@
             <thead>
                 <tr>
                     <th scope="col">USD</th>
+                    <th scope="col">Variación</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Hora</th>
                 </tr>
@@ -57,7 +58,8 @@
                 @foreach($history as $data)
                 <tr>
                     <td>{{ $data->usd }}</td>
-                    <td>{{ $data->date }}</td>
+                    <td>{{ $data->variation }} %</td>
+                    <td><?= date("d/m/Y", strtotime($data->date)); ?></td>
                     <td>{{ $data->hour }}</td>
                 </tr>
                 @endforeach
@@ -100,6 +102,7 @@
                 $('#myTable').find('tbody').append(`
                     <tr>
                         <td>${data['bitcoin']}</td>
+                        <td>${data['variacion']} %</td>
                         <td>${data['fecha']}</td>
                         <td>${data['hora']}</td>
                     </tr>`);

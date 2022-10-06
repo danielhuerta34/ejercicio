@@ -43,15 +43,37 @@ class HomeController extends Controller
         $json = json_decode(file_get_contents($url));
 
         foreach ($json as $obj) {
-            if ($obj->code == 'USD') $btc = $obj->rate;
+            if ($obj->code == 'USD') {
+                $btc = $obj->rate;
+            }
         }
 
-        DB::table('history')->insert([
-            'usd' => $btc,
-            'date' => $fecha,
-            'hour' => $hora
-        ]);
+        $datos = DB::table("history")->count();
+        if ($datos > 0) {
+            $fila_anterior = DB::select(DB::raw('SELECT *
+        FROM history
+        WHERE id = (SELECT MAX(id)
+                    FROM history
+                    WHERE id < ' . $btc . ')'));
 
-        return array("bitcoin" => $btc, "fecha" => $fecha, "hora" => $hora);
+            $descuento = $fila_anterior[0]->usd - $btc;
+            $total = ($descuento / $fila_anterior[0]->usd) * 100;
+
+            DB::table('history')->insert([
+                'usd' => $btc,
+                'variation' => $total,
+                'date' => $fecha,
+                'hour' => $hora
+            ]);
+        } else {
+            DB::table('history')->insert([
+                'usd' => $btc,
+                'variation' => 0,
+                'date' => $fecha,
+                'hour' => $hora
+            ]);
+        }
+
+        return array("bitcoin" => $btc, "variacion" => $total, "fecha" => date("d/m/Y", strtotime($fecha)), "hora" => $hora);
     }
 }

@@ -14,6 +14,7 @@ class CreateHistoryTable extends Migration
         Schema::create('history', function (Blueprint $table) {
             $table->id();
             $table->string('usd');
+            $table->string('variation');
             $table->date('date');
             $table->time('hour');
         });

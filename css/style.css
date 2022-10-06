@@ -5,6 +5,10 @@ body {
     font-size: 17px;
 }
 
+.alertify-notifier .ajs-message.ajs-success {
+    background-color: blue!important;
+}
+
 span {
     color: #0093ad;
 }

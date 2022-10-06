@@ -45,7 +45,7 @@
     </h5>
 
     <div class="table-responsive mt-4">
-        <table class="table table-striped" id="myTable">
+        <table class="table table-striped table-bordered" id="myTable">
             <thead>
                 <tr>
                     <th scope="col">USD</th>
@@ -58,7 +58,7 @@
                 @foreach($history as $data)
                 <tr>
                     <td>{{ $data->usd }}</td>
-                    <td>{{ $data->variation }} %</td>
+                    <td><?= round($data->variation, 3) ?> %</td>
                     <td><?= date("d/m/Y", strtotime($data->date)); ?></td>
                     <td>{{ $data->hour }}</td>
                 </tr>

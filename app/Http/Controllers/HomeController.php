@@ -74,6 +74,6 @@ class HomeController extends Controller
             ]);
         }
 
-        return array("bitcoin" => $btc, "variacion" => $total, "fecha" => date("d/m/Y", strtotime($fecha)), "hora" => $hora);
+        return array("bitcoin" => $btc, "variacion" => round($total, 3), "fecha" => date("d/m/Y", strtotime($fecha)), "hora" => $hora);
     }
 }
